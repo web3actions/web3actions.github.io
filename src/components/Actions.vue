@@ -24,7 +24,6 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
         <div class="bg-indigo-50 p-1 rounded-xl mb-28 mx-auto space-x-2">
           <button class="bg-indigo-600 text-white rounded-xl px-3 py-2 font-bold">send-tx</button>
           <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">get-tx</button>
-          <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">sign-tx</button>
           <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">price-feeds</button>
           <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">query-subgraph</button>
           <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">get-config</button>
@@ -35,17 +34,17 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
             <h2 class="text-gray-900 text-6xl font-brand font-extrabold">
               Send Transaction
             </h2>
-            <p class="leading-8 text-gray-400 text-2xl mt-5">
+            <p class="leading-8 text-gray-500 text-2xl mt-5">
               Send a Web3 transaction to a configured RPC node to make contract calls and send ETH.
             </p>
             <div class="mt-10 text-center">
-              <a href="#" class="border border-gray-300 text-gray-900 hover:bg-gray-100 hover:border-gray-100 rounded-xl text-xl px-4 py-3">
+              <a href="#" class="border border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
                 <i class="fab fa-github" /> Go to repository
               </a>
             </div>
           </div>
           <div class="col-span-7">
-            <div class="border-2 border-indigo-200 rounded-3xl p-8 relative">
+            <div class="bg-white rounded-3xl p-8 border shadow-inner relative">
               <button class="text-indigo-600 text-xl absolute top-5 right-5">
                 <i class="far fa-copy" />
               </button>
