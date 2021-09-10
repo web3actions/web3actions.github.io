@@ -7,11 +7,15 @@ module.exports = {
     extend: {
       fontFamily: {
         brand: ['Montserrat', ...defaultTheme.fontFamily.sans],
+        booster: ['Rajdhani', ...defaultTheme.fontFamily.sans],
       },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio')
+  ],
 }

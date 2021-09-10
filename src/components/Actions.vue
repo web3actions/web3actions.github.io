@@ -18,7 +18,7 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
 </script>
 
 <template>
-  <div class="bg-gray-50">
+  <div class="bg-white">
     <div class="container mx-auto px-5 min-h-screen flex flex-col">
       <div class="flex-grow flex flex-col justify-center">
         <div class="bg-indigo-50 p-1 rounded-xl mb-28 mx-auto space-x-2">
@@ -31,7 +31,7 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
         </div>
         <div class="grid grid-cols-12 gap-16">
           <div class="col-span-5">
-            <h1 class="text-indigo-500 text-3xl font-brand font-extralight mb-5">The Actions</h1>
+            <h1 class="text-indigo-500 text-3xl font-brand font-extralight mb-5">The Building Blocks</h1>
             <h2 class="text-gray-900 text-6xl font-brand font-extrabold">
               Send Transaction
             </h2>
@@ -45,7 +45,7 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
             </div>
           </div>
           <div class="col-span-7">
-            <div class="bg-white rounded-3xl p-8 border shadow-inner relative">
+            <div class="bg-indigo-50 text-indigo-900 rounded-3xl p-8 relative">
               <button class="text-indigo-600 text-xl absolute top-5 right-5">
                 <i class="far fa-copy" />
               </button>

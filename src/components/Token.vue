@@ -1,22 +1,3 @@
-<script setup>
-const actionExample = `<span class="font-bold">name</span>: Pay Contributor
-<span class="font-bold">on</span>:
-  <span class="font-bold">issues</span>:
-    <span class="font-bold">types</span>: [ opened ]
-<span class="font-bold">jobs</span>:
-  <span class="font-bold">pay-contributor</span>:
-    <span class="font-bold">name</span>: Pay Contributor
-    <span class="font-bold">runs-on</span>: ubuntu-latest
-    <span class="font-bold">if</span>: \${{ contains(github.event.issue.labels.*.name, 'payed') }}
-    <span class="font-bold">steps</span>:
-      <span class="font-bold">uses</span>: cryptoactions/send-tx@593fa08f4aaf9a4b206d3d7876cd6f8746093a4b
-      <span class="font-bold">with</span>:
-        <span class="font-bold">seed-phrase</span>: '...'
-        <span class="font-bold">from</span>: 0x123
-        <span class="font-bold">to</span>: 0x456
-        <span class="font-bold">value</span>: '1000000000000000000'`
-</script>
-
 <template>
   <div class="bg-gray-50">
     <div class="container mx-auto px-5 min-h-screen flex flex-col">

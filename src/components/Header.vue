@@ -18,8 +18,8 @@ import Navbar from './Navbar.vue'
             </p>
           </div>
           <div>
-            <div class="bg-white bg-opacity-10 h-96 rounded-3xl flex justify-center items-center">
-              <i class="fas fa-play text-white text-opacity-10 text-8xl" />
+            <div class="aspect-w-16 aspect-h-9 h-96 rounded-3xl overflow-hidden">
+              <iframe src="https://www.youtube-nocookie.com/embed/cP0I9w2coGU" frameborder="0" allowfullscreen></iframe>
             </div>
           </div>
         </div>
