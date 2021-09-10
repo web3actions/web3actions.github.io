@@ -1,4 +1,9 @@
 <script setup>
+import { ref } from 'vue'
+import { TransitionRoot, TransitionChild } from '@headlessui/vue'
+
+const showAction = ref('send-tx')
+
 const actionExample = `<span class="font-bold">name</span>: Pay Contributor
 <span class="font-bold">on</span>:
   <span class="font-bold">issues</span>:
@@ -20,37 +25,104 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
 <template>
   <div class="bg-white">
     <div class="container mx-auto px-5 min-h-screen flex flex-col">
-      <div class="flex-grow flex flex-col justify-center">
-        <div class="bg-indigo-50 p-1 rounded-xl mb-28 mx-auto space-x-2">
-          <button class="bg-indigo-600 text-white rounded-xl px-3 py-2 font-bold">send-tx</button>
-          <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">get-tx</button>
-          <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">price-feeds</button>
-          <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">get-config</button>
-          <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">oracle</button>
-          <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">signer</button>
-        </div>
-        <div class="grid grid-cols-12 gap-16">
-          <div class="col-span-5">
-            <h1 class="text-indigo-500 text-3xl font-brand font-extralight mb-5">The Building Blocks</h1>
-            <h2 class="text-gray-900 text-6xl font-brand font-extrabold">
-              Send Transaction
-            </h2>
-            <p class="leading-8 text-gray-500 text-2xl mt-5">
-              Send a Web3 transaction to a configured RPC node to make contract calls and send ETH.
-            </p>
-            <div class="mt-10 text-center">
-              <a href="#" class="border border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
-                <i class="fab fa-github" /> Go to repository
-              </a>
-            </div>
+      <div class="bg-indigo-50 p-1 rounded-xl my-28 mx-auto space-x-2">
+        <button @click="showAction = 'send-tx'" :class="['nav-item', { active: showAction === 'send-tx' }]">send-tx</button>
+        <button @click="showAction = 'get-tx'" :class="['nav-item', { active: showAction === 'get-tx' }]">get-tx</button>
+        <button @click="showAction = 'send-tx'" :class="['nav-item', { active: showAction === 'price-feeds' }]">price-feeds</button>
+        <button @click="showAction = 'get-tx'" :class="['nav-item', { active: showAction === 'get-config' }]">get-config</button>
+        <button @click="showAction = 'send-tx'" :class="['nav-item', { active: showAction === 'oracle' }]">oracle</button>
+        <button @click="showAction = 'get-tx'" :class="['nav-item', { active: showAction === 'signer' }]">signer</button>
+      </div>
+      <div class="grid grid-cols-12 gap-16">
+        <div class="col-span-5">
+          <h1 class="text-indigo-500 text-3xl font-brand font-extralight mb-5 durat">The Building Blocks</h1>
+          <div class="relative">
+            <TransitionRoot
+              appear
+              :show="showAction === 'send-tx'"
+              enter="transition-all transform duration-1000"
+              enter-from="-translate-x-16 opacity-0"
+              enter-to="translate-x-0 opacity-100"
+              leave="transition-all transform duration-1000"
+              leave-from="translate-x-0 opacity-100"
+              leave-to="-translate-x-16 opacity-0"
+              class="absolute"
+            >
+              <h2 class="text-gray-900 text-6xl font-brand font-extrabold">
+                Send Transaction
+              </h2>
+              <p class="leading-8 text-gray-500 text-2xl mt-5">
+                Send a Web3 transaction to a configured RPC node to make contract calls and send ETH.
+              </p>
+              <div class="mt-10 text-center">
+                <a href="#" class="border border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
+                  <i class="fab fa-github" /> Go to repository
+                </a>
+              </div>
+            </TransitionRoot>
+            <TransitionRoot
+              appear
+              :show="showAction === 'get-tx'"
+              enter="transition-all transform duration-1000"
+              enter-from="-translate-x-16 opacity-0"
+              enter-to="translate-x-0 opacity-100"
+              leave="transition-all transform duration-1000"
+              leave-from="translate-x-0 opacity-100"
+              leave-to="-translate-x-16 opacity-0"
+              class="absolute"
+            >
+              <h2 class="text-gray-900 text-6xl font-brand font-extrabold">
+                Get Transaction
+              </h2>
+              <p class="leading-8 text-gray-500 text-2xl mt-5">
+                Fetch a Web3 transaction and process it in your workflow.
+              </p>
+              <div class="mt-10 text-center">
+                <a href="#" class="border border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
+                  <i class="fab fa-github" /> Go to repository
+                </a>
+              </div>
+            </TransitionRoot>
           </div>
-          <div class="col-span-7">
-            <div class="bg-indigo-50 text-indigo-900 rounded-3xl p-8 relative">
-              <button class="text-indigo-600 text-xl absolute top-5 right-5">
-                <i class="far fa-copy" />
-              </button>
-              <pre v-html="actionExample"></pre>
-            </div>
+        </div>
+        <div class="col-span-7">
+          <div class="relative">
+            <TransitionRoot
+              appear
+              :show="showAction === 'send-tx'"
+              enter="transition-all transform duration-1000"
+              enter-from="translate-x-16 opacity-0"
+              enter-to="translate-x-0 opacity-100"
+              leave="transition-all transform duration-1000"
+              leave-from="translate-x-0 opacity-100"
+              leave-to="translate-x-16 opacity-0"
+              class="absolute"
+            >
+              <div class="bg-indigo-50 text-indigo-900 rounded-3xl p-8 relative">
+                <button class="text-indigo-600 text-xl absolute top-5 right-5">
+                  <i class="far fa-copy" />
+                </button>
+                <pre v-html="actionExample"></pre>
+              </div>
+            </TransitionRoot>
+            <TransitionRoot
+              appear
+              :show="showAction === 'get-tx'"
+              enter="transition-all transform duration-1000"
+              enter-from="translate-x-16 opacity-0"
+              enter-to="translate-x-0 opacity-100"
+              leave="transition-all transform duration-1000"
+              leave-from="translate-x-0 opacity-100"
+              leave-to="translate-x-16 opacity-0"
+              class="absolute"
+            >
+              <div class="bg-indigo-50 text-indigo-900 rounded-3xl p-8 relative">
+                <button class="text-indigo-600 text-xl absolute top-5 right-5">
+                  <i class="far fa-copy" />
+                </button>
+                <pre v-html="actionExample"></pre>
+              </div>
+            </TransitionRoot>
           </div>
         </div>
       </div>
