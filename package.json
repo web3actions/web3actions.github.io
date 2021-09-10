@@ -4,11 +4,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "deploy": "push-dir --dir=dist --branch=gh-pages"
   },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.3",
+    "push-dir": "^0.4.1",
     "vue": "^3.2.6"
   },
   "devDependencies": {
