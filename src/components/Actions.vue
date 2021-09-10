@@ -25,8 +25,9 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
           <button class="bg-indigo-600 text-white rounded-xl px-3 py-2 font-bold">send-tx</button>
           <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">get-tx</button>
           <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">price-feeds</button>
-          <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">query-subgraph</button>
           <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">get-config</button>
+          <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">oracle</button>
+          <button class="hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold">signer</button>
         </div>
         <div class="grid grid-cols-12 gap-16">
           <div class="col-span-5">
