@@ -1,25 +1,14 @@
 <script setup>
 import { ref } from 'vue'
-import { TransitionRoot, TransitionChild } from '@headlessui/vue'
+import { TransitionRoot } from '@headlessui/vue'
+import exampleSendTx from './../examples/send-tx.yml?raw'
+import exampleGetTx from './../examples/get-tx.yml?raw'
+import exampleGetConfig from './../examples/get-config.yml?raw'
+import examplePriceFeeds from './../examples/price-feeds.yml?raw'
+import exampleOracle from './../examples/oracle.yml?raw'
+import exampleSigner from './../examples/signer.yml?raw'
 
 const showAction = ref('send-tx')
-
-const actionExample = `<span class="font-bold">name</span>: Pay Contributor
-<span class="font-bold">on</span>:
-  <span class="font-bold">issues</span>:
-    <span class="font-bold">types</span>: [ opened ]
-<span class="font-bold">jobs</span>:
-  <span class="font-bold">pay-contributor</span>:
-    <span class="font-bold">name</span>: Pay Contributor
-    <span class="font-bold">runs-on</span>: ubuntu-latest
-    <span class="font-bold">if</span>: \${{ contains(github.event.issue.labels.*.name, 'payed') }}
-    <span class="font-bold">steps</span>:
-      <span class="font-bold">uses</span>: cryptoactions/send-tx@593fa08f4aaf9a4b206d3d7876cd6f8746093a4b
-      <span class="font-bold">with</span>:
-        <span class="font-bold">seed-phrase</span>: '...'
-        <span class="font-bold">from</span>: 0x123
-        <span class="font-bold">to</span>: 0x456
-        <span class="font-bold">value</span>: '1000000000000000000'`
 </script>
 
 <template>
@@ -28,8 +17,8 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
       <div class="bg-indigo-50 p-1 rounded-xl my-28 mx-auto space-x-2">
         <button @click="showAction = 'send-tx'" :class="['nav-item', { active: showAction === 'send-tx' }]">send-tx</button>
         <button @click="showAction = 'get-tx'" :class="['nav-item', { active: showAction === 'get-tx' }]">get-tx</button>
+        <button @click="showAction = 'get-config'" :class="['nav-item', { active: showAction === 'get-config' }]">get-config</button>
         <button @click="showAction = 'price-feeds'" :class="['nav-item', { active: showAction === 'price-feeds' }]">price-feeds</button>
-        <button @click="showAction = 'get-tx'" :class="['nav-item', { active: showAction === 'get-config' }]">get-config</button>
         <button @click="showAction = 'oracle'" :class="['nav-item', { active: showAction === 'oracle' }]">oracle</button>
         <button @click="showAction = 'signer'" :class="['nav-item', { active: showAction === 'signer' }]">signer</button>
       </div>
@@ -76,6 +65,31 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
               </h2>
               <p class="leading-8 text-gray-500 text-2xl mt-5">
                 Fetch transaction information and process it in your workflow.
+              </p>
+              <div class="mt-10 text-center">
+                <a href="#" class="border border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
+                  <i class="fab fa-github" /> Go to repository
+                </a>
+              </div>
+            </TransitionRoot>
+            <TransitionRoot
+              appear
+              :show="showAction === 'get-config'"
+              enter="transition-all transform duration-1000"
+              enter-from="-translate-x-16 opacity-0"
+              enter-to="translate-x-0 opacity-100"
+              leave="transition-all transform duration-1000"
+              leave-from="translate-x-0 opacity-100"
+              leave-to="-translate-x-16 opacity-0"
+              class="absolute"
+            >
+              <h2 class="text-gray-900 text-6xl font-brand font-extrabold">
+                Crypto Config
+              </h2>
+              <p class="leading-8 text-gray-500 text-2xl mt-5">
+                Read from a repositories cryptoactions.json file or a "cryptoactions" section in the package.json.<br />
+                <br />
+                Users can have their config at username/username.
               </p>
               <div class="mt-10 text-center">
                 <a href="#" class="border border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
@@ -165,13 +179,13 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
               leave="transition-all transform duration-1000"
               leave-from="translate-x-0 opacity-100"
               leave-to="translate-x-16 opacity-0"
-              class="absolute"
+              class="absolute inset-0"
             >
               <div class="bg-indigo-50 text-indigo-900 rounded-3xl p-8 relative">
                 <button class="text-indigo-600 text-xl absolute top-5 right-5">
                   <i class="far fa-copy" />
                 </button>
-                <pre v-html="actionExample"></pre>
+                <pre v-highlightjs="exampleSendTx"><code class="yaml bg-transparent p-0"></code></pre>
               </div>
             </TransitionRoot>
             <TransitionRoot
@@ -183,13 +197,31 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
               leave="transition-all transform duration-1000"
               leave-from="translate-x-0 opacity-100"
               leave-to="translate-x-16 opacity-0"
-              class="absolute"
+              class="absolute inset-0"
             >
               <div class="bg-indigo-50 text-indigo-900 rounded-3xl p-8 relative">
                 <button class="text-indigo-600 text-xl absolute top-5 right-5">
                   <i class="far fa-copy" />
                 </button>
-                <pre v-html="actionExample"></pre>
+                <pre v-highlightjs="exampleGetTx"><code class="yaml bg-transparent p-0"></code></pre>
+              </div>
+            </TransitionRoot>
+            <TransitionRoot
+              appear
+              :show="showAction === 'get-config'"
+              enter="transition-all transform duration-1000"
+              enter-from="translate-x-16 opacity-0"
+              enter-to="translate-x-0 opacity-100"
+              leave="transition-all transform duration-1000"
+              leave-from="translate-x-0 opacity-100"
+              leave-to="translate-x-16 opacity-0"
+              class="absolute inset-0"
+            >
+              <div class="bg-indigo-50 text-indigo-900 rounded-3xl p-8 relative">
+                <button class="text-indigo-600 text-xl absolute top-5 right-5">
+                  <i class="far fa-copy" />
+                </button>
+                <pre v-highlightjs="exampleGetConfig"><code class="yaml bg-transparent p-0"></code></pre>
               </div>
             </TransitionRoot>
             <TransitionRoot
@@ -201,13 +233,13 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
               leave="transition-all transform duration-1000"
               leave-from="translate-x-0 opacity-100"
               leave-to="translate-x-16 opacity-0"
-              class="absolute"
+              class="absolute inset-0"
             >
               <div class="bg-indigo-50 text-indigo-900 rounded-3xl p-8 relative">
                 <button class="text-indigo-600 text-xl absolute top-5 right-5">
                   <i class="far fa-copy" />
                 </button>
-                <pre v-html="actionExample"></pre>
+                <pre v-highlightjs="examplePriceFeeds"><code class="yaml bg-transparent p-0"></code></pre>
               </div>
             </TransitionRoot>
             <TransitionRoot
@@ -219,13 +251,13 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
               leave="transition-all transform duration-1000"
               leave-from="translate-x-0 opacity-100"
               leave-to="translate-x-16 opacity-0"
-              class="absolute"
+              class="absolute inset-0"
             >
               <div class="bg-indigo-50 text-indigo-900 rounded-3xl p-8 relative">
                 <button class="text-indigo-600 text-xl absolute top-5 right-5">
                   <i class="far fa-copy" />
                 </button>
-                <pre v-html="actionExample"></pre>
+                <pre v-highlightjs="exampleOracle"><code class="yaml bg-transparent p-0"></code></pre>
               </div>
             </TransitionRoot>
             <TransitionRoot
@@ -237,13 +269,13 @@ const actionExample = `<span class="font-bold">name</span>: Pay Contributor
               leave="transition-all transform duration-1000"
               leave-from="translate-x-0 opacity-100"
               leave-to="translate-x-16 opacity-0"
-              class="absolute"
+              class="absolute inset-0"
             >
               <div class="bg-indigo-50 text-indigo-900 rounded-3xl p-8 relative">
                 <button class="text-indigo-600 text-xl absolute top-5 right-5">
                   <i class="far fa-copy" />
                 </button>
-                <pre v-html="actionExample"></pre>
+                <pre v-highlightjs="exampleSigner"><code class="yaml bg-transparent p-0"></code></pre>
               </div>
             </TransitionRoot>
           </div>

@@ -1,0 +1,20 @@
+name: Create Invoice
+on:
+  repository_dispatch:
+    types: [ invoice ]
+
+jobs:
+  create-invoice:
+    name: Create Invoice
+    runs-on: ubuntu-latest
+    steps:
+      - id: get-tx
+        uses: cryptoactions/get-tx@206d3d7876cd6f8746093a4b593fa08f4aaf9a4b
+        with:
+          rpc-node: ${{ secrets.RPC_NODE }}
+          transaction-hash: github.event.transaction_hash
+      - uses: actions/github-script@v4
+        with:
+          script: |
+            const pdf = require('./path/to/pdf.js')
+            pdf(${{ steps.get-tx.outputs.tx }})

@@ -9,8 +9,8 @@
               Action Token
             </h2>
             <p class="leading-8 text-gray-500 text-2xl mt-5">
-              The Crypto Actions Token (ACTION) is and ERC677 token, used to govern the organization, e.g. vote on official signers.<br />
-              <br>
+              The Crypto Actions Token (ACTION) is and ERC677 token, used to govern the organization, e.g. vote for official signers, and to promote issues in our <a href="https://github.com/cryptoactions?q=bountyfeed" target="__blank" class="text-indigo-600">bounty feeds</a>.<br />
+              <br />
               It is airdropped to users that contributed on GitHub in the past.
             </p>
             <div class="mt-10 text-center">

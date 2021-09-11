@@ -1,0 +1,17 @@
+name: Oracle
+on:
+  issues:
+    types: [ opened ]
+
+jobs:
+  oracle:
+    name: Process Oracle Request
+    runs-on: ubuntu-latest
+    steps:
+      - uses: cryptoactions/oracle@main
+        with:
+          github-token: ${{ secrets.PAT }}
+          rpc-node: ${{ secrets.RPC_NODE }}
+          wallet-key: ${{ secrets.WALLET_KEY }}
+          contract-address: "0x739b522E7a06bf5335f6a728F211d1A078B1F933"
+          signer-repo: cryptoactions/signer

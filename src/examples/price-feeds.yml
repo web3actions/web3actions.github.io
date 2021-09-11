@@ -1,0 +1,18 @@
+name: Price Feed
+on:
+  pull_request:
+    branches:
+      - main
+    types: [ closed ]
+
+jobs:
+  pay-contributor:
+    name: Pay Contributor
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'payed') }}
+    steps:
+      - uses: cryptoactions/send-tx@593fa08f4aaf9a4b206d3d7876cd6f8746093a4b
+        with:
+          wallet-key: ${{ secrets.WALLET_KEY }}
+          to: github.event.pull_request.author.login
+          value: '50000000000000000'
