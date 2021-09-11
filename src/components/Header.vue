@@ -14,7 +14,7 @@ import Navbar from './Navbar.vue'
               Integrate crypto payments right into your CI/CD workflows.
             </h2>
             <p class="leading-9 text-gray-50 text-opacity-50 text-2xl mt-5">
-              Crypto Actions is based on the simple idea to connect CI/CD workflows and crypo wallets. This opens up a lot of potential for completely automated and customized payment workflows for open source projects.
+              Crypto Actions is based on the simple idea of connecting CI/CD workflows and crypo wallets. This opens up a lot of potential for completely automated and customized payment workflows for open source projects.
             </p>
           </div>
           <div>

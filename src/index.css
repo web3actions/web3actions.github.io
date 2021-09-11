@@ -16,6 +16,6 @@
   }
 
   .nav-item.active {
-    @apply hover:bg-indigo-600 bg-indigo-600 text-indigo-100
+    @apply hover:bg-indigo-600 bg-indigo-600 text-white
   }
 }
