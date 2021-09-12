@@ -23,9 +23,8 @@ jobs:
         with:
           rpc-node: ${{ secrets.RPC_NODE }}
           contract: "0x8856E7590442cB4610022b813C9ca873f2e185e0"
-          function: getGithubWorkflowRequest
-          input-types: uint256
-          input-values: '[${{ fromJSON(github.event.issue.body).requestId }}]'
+          function: getGithubWorkflowRequest(uint256) returns(bytes32,address,uint256,address,string,string,bool)
+          inputs: '[${{ fromJSON(github.event.issue.body).requestId }}]'
 
       - name: Send Airdrop
         if: |
@@ -36,6 +35,5 @@ jobs:
           rpc-node: ${{ secrets.RPC_NODE }}
           wallet-key: ${{ secrets.WALLET_KEY }}
           contract: "0x8856E7590442cB4610022b813C9ca873f2e185e0"
-          function: fulfillAirdrop
-          input-types: uint256,uint256
-          input-values: '[${{ fromJSON(github.event.issue.body).requestId }}, ${{ steps.count-pull-request.outputs.count }}]'
+          function: fulfillAirdrop(uint256,uint256)
+          inputs: '[${{ fromJSON(github.event.issue.body).requestId }}, ${{ steps.count-pull-request.outputs.count }}]'
