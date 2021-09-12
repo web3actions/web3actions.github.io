@@ -3,13 +3,10 @@ on:
   issues:
     types: [ opened ]
 
-env:
-  REQUEST: ${{ github.event.issue.body }}
-
 jobs:
   airdrop:
     runs-on: ubuntu-latest
-    if: fromJSON(env.REQUEST).requestId
+    if: fromJSON(github.event.issue.body).requestId
     steps:
       - uses: actions/checkout@v2
 
@@ -26,7 +23,7 @@ jobs:
           rpc-node: ${{ secrets.RPC_NODE }}
           contract: "0x8856E7590442cB4610022b813C9ca873f2e185e0"
           function: getGithubWorkflowRequest(uint256)
-          inputs: '[${{ fromJSON(env.REQUEST).requestId }}]'
+          inputs: '[${{ fromJSON(github.event.issue.body).requestId }}]'
 
       - name: Send Airdrop
         if: ${{ fromJSON(steps.request.outputs.result).fulfilled == 'false' }}
