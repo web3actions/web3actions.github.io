@@ -8,6 +8,7 @@ env:
 
 jobs:
   airdrop:
+    runs-on: ubuntu-latest
     if: fromJSON(env.REQUEST).requestId
     steps:
       - uses: actions/checkout@v2
