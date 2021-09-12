@@ -26,12 +26,12 @@ jobs:
           function: getGithubWorkflowRequest(uint256) returns(string hash,address account,uint256 fee,address sender,string name,string githubUserId,bool fulfilled)
           inputs: '[${{ fromJSON(github.event.issue.body).requestId }}]'
 
-      - run: echo "${{ steps.request.outputs.result }} ${{ github.event.issue.author.node_id }}"
+      - run: echo "${{ toJSON(github.event.issue) }}"
 
       - name: Send Airdrop
         if: |
-          fromJSON(steps.request.outputs.result).fulfilled == false &&
-          fromJSON(steps.request.outputs.result).githubUserId == github.event.issue.author.node_id
+          fromJSON(steps.request.outputs.result)[6] == false &&
+          fromJSON(steps.request.outputs.result)[5] == github.event.issue.author.node_id
         uses: cryptoactions/tx@main
         with:
           rpc-node: ${{ secrets.RPC_NODE }}
