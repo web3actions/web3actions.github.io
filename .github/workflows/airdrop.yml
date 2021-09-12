@@ -23,7 +23,7 @@ jobs:
         with:
           rpc-node: ${{ secrets.RPC_NODE }}
           contract: "0xD05B06F1F0456605779b41b4a1FbB21d7647f7CB"
-          function: getGithubWorkflowRequest(uint256) returns(string,address,uint256,address,string,string,bool)
+          function: getGithubWorkflowRequest(uint256) returns(string hash,address account,uint256 fee,address sender,string name,string githubUserId,bool fulfilled)
           inputs: '[${{ fromJSON(github.event.issue.body).requestId }}]'
 
       - name: Send Airdrop
