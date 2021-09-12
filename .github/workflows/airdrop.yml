@@ -26,7 +26,7 @@ jobs:
           function: getGithubWorkflowRequest(uint256) returns(string hash,address account,uint256 fee,address sender,string name,string githubUserId,bool fulfilled)
           inputs: '[${{ fromJSON(github.event.issue.body).requestId }}]'
 
-      - run: echo "${{ steps.request.outputs.result).githubUserId }} ${{ github.event.issue.author.node_id }} "
+      - run: echo "${{ steps.request.outputs.result }} ${{ github.event.issue.author.node_id }}"
 
       - name: Send Airdrop
         if: |
