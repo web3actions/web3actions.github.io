@@ -1,0 +1,40 @@
+name: Crypto Actions Token Airdrop
+on:
+  issues:
+    types: [ opened ]
+
+env:
+  REQUEST: ${{ github.event.issue.body }}
+
+jobs:
+  - name: Airdrop
+    if: fromJSON(env.REQUEST).requestId
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Count Pull Requests
+        id: pull-request-count
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const countPullRequests = require('./count-pull-requests.js')
+            await countPullRequests({ github, context, core })
+      
+      - name: Read Workflow Request
+        id: request
+        uses: cryptoactions/tx@main
+        with:
+          rpc-node: ${{ secrets.RPC_NODE }}
+          contract: "0x8856E7590442cB4610022b813C9ca873f2e185e0"
+          function: getGithubWorkflowRequest(uint256)
+          inputs: '[${{ fromJSON(env.REQUEST).requestId }}]'
+
+      - name: Send Airdrop
+        if: ${{ fromJSON(steps.request.outputs.result).fulfilled == 'false' }}
+        uses: cryptoactions/tx@main
+        with:
+          rpc-node: ${{ secrets.RPC_NODE }}
+          wallet-key: ${{ secrets.WALLET_KEY }}
+          to: "0x8856E7590442cB4610022b813C9ca873f2e185e0"
+          function: fulfillAirdrop(uint256,uint256,address)
+          inputs: '[1, ${{ env.PR_COUNT }}]'

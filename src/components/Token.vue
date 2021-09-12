@@ -1,3 +1,53 @@
+<script setup>
+import { ref, watch } from 'vue'
+import { ethers } from 'ethers'
+import airdropAbi from '../airdrop.json'
+
+const ethEnabled = !!window.ethereum
+const ethAccount = ref(null)
+
+const ethProvider = new ethers.providers.Web3Provider(window.ethereum)
+const ethSigner = ethProvider.getSigner()
+const airdrop = new ethers.Contract(
+  import.meta.env.VITE_APP_AIRDROP_ADDRESS,
+  airdropAbi.abi,
+  ethProvider
+)
+const airdropWithSigner = airdrop.connect(ethSigner)
+
+const githubUsername = ref('')
+const githubUser = ref(null)
+let timeout = 0
+watch(githubUsername, () => {
+  clearTimeout(timeout)
+  timeout = setTimeout(() => {
+    loadGithubUser()
+  }, 1000)
+})
+
+const loadGithubUser = async () => {
+  if (githubUsername.value) {
+    githubUser.value = await fetch('https://api.github.com/users/' + githubUsername.value).then(res => res.json())
+  } else {
+    githubUser.value = null
+  }
+}
+
+const claiming = ref(false)
+const claim = async () => {
+  claiming.value = true
+  if (!ethAccount.value) {
+    const accounts = await ethProvider.send("eth_requestAccounts", [])
+    ethAccount.value = accounts[0]
+  }
+  
+  const fee = await airdropWithSigner.getGithubWorkflowFee('airdrop')
+  const tx = await airdropWithSigner.requestAirdrop(githubUser.value.node_id, { value: fee })
+  const confirmedTx = await tx.wait()
+  console.log(confirmedTx.events[0].args.requestId)
+  claiming.value = false
+}
+</script>
 <template>
   <div class="bg-gray-50">
     <div class="container mx-auto px-5 min-h-screen flex flex-col">
@@ -40,9 +90,20 @@
                 <div class="text-4xl font-bold font-brand">490,000</div>
               </div>
             </div>
-            <a href="#" class="inline-block mt-10 text-gray-50 bg-indigo-700 hover:bg-indigo-600 rounded-xl text-xl px-4 py-3">
-              <i class="fas fa-hand-holding-usd"></i> Claim Airdrop
-            </a>
+            <div v-if="ethEnabled" class="text-center">
+              <div class="relative mt-10">
+                <input type="text" v-model="githubUsername" class="rounded-xl px-4 py-3 border-gray-300 shadow-inner focus:ring-indigo-600 focus:ring-4" placeholder="GitHub Username" />
+                <div v-if="githubUser" :style="`background-image: url(${githubUser.avatar_url})`" class="bg-cover w-8 h-8 border border-gray-300 rounded-xl absolute top-2 right-2">
+                  <a :href="githubUser.html_url" target="__blank" class="absolute inset-0"></a>
+                </div>
+              </div>
+              <button @click="claim" :disabled="!githubUser || claiming" class="inline-block mt-5 text-gray-50 bg-indigo-700 hover:bg-indigo-600 rounded-xl text-xl px-4 py-3 disabled:opacity-50">
+                <i v-if="claiming" class="fas fa-circle-notch fa-spin"></i>
+                <i v-else class="fas fa-hand-holding-usd"></i>
+                Claim Airdrop
+              </button>
+            </div>
+            <div v-else class="w-64 text-center mt-10 text-gray-400">Use an Ethereum compatible browser to claim the airdrop.</div>
           </div>
         </div>
       </div>
