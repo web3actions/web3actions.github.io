@@ -16,7 +16,7 @@ jobs:
         id: count-pull-request
         uses: actions/github-script@v4
         with:
-          script: await require('./count-pull-requests')({ github, context, core })
+          script: await require('./.github/workflows/count-pull-requests')({ github, context, core })
       
       - name: Read Workflow Request
         id: request
