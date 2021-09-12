@@ -19,19 +19,23 @@ jobs:
       
       - name: Read Workflow Request
         id: request
-        uses: cryptoactions/tx@main
+        uses: cryptoactions/tx@32c4c83c23bd3eeb14792155b01c389224593c8a
         with:
           rpc-node: ${{ secrets.RPC_NODE }}
           contract: "0x8856E7590442cB4610022b813C9ca873f2e185e0"
-          function: getGithubWorkflowRequest(uint256)
-          inputs: '[${{ fromJSON(github.event.issue.body).requestId }}]'
+          function: getGithubWorkflowRequest
+          input-types: uint256
+          input-values: '[${{ fromJSON(github.event.issue.body).requestId }}]'
 
       - name: Send Airdrop
-        if: ${{ fromJSON(steps.request.outputs.result).fulfilled == 'false' }}
-        uses: cryptoactions/tx@main
+        if: |
+          fromJSON(steps.request.outputs.result).fulfilled == 'false' &&
+          fromJSON(steps.request.outputs.result).githubUserId == github.event.issue.author.node_id
+        uses: cryptoactions/tx@32c4c83c23bd3eeb14792155b01c389224593c8a
         with:
           rpc-node: ${{ secrets.RPC_NODE }}
           wallet-key: ${{ secrets.WALLET_KEY }}
-          to: "0x8856E7590442cB4610022b813C9ca873f2e185e0"
-          function: fulfillAirdrop(uint256,uint256,address)
-          inputs: '[1, ${{ steps.count-pull-request.outputs.count }}]'
+          contract: "0x8856E7590442cB4610022b813C9ca873f2e185e0"
+          function: fulfillAirdrop
+          inpu-types: uint256,uint256
+          input-values: '[${{ fromJSON(github.event.issue.body).requestId }}, ${{ steps.count-pull-request.outputs.count }}]'
