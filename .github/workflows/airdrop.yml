@@ -22,7 +22,7 @@ jobs:
         uses: cryptoactions/tx@main
         with:
           rpc-node: ${{ secrets.RPC_NODE }}
-          contract: "0x8856E7590442cB4610022b813C9ca873f2e185e0"
+          contract: "0xD05B06F1F0456605779b41b4a1FbB21d7647f7CB"
           function: getGithubWorkflowRequest(uint256) returns(bytes32,address,uint256,address,string,string,bool)
           inputs: '[${{ fromJSON(github.event.issue.body).requestId }}]'
 
@@ -34,6 +34,6 @@ jobs:
         with:
           rpc-node: ${{ secrets.RPC_NODE }}
           wallet-key: ${{ secrets.WALLET_KEY }}
-          contract: "0x8856E7590442cB4610022b813C9ca873f2e185e0"
+          contract: "0xD05B06F1F0456605779b41b4a1FbB21d7647f7CB"
           function: fulfillAirdrop(uint256,uint256)
           inputs: '[${{ fromJSON(github.event.issue.body).requestId }}, ${{ steps.count-pull-request.outputs.count }}]'
