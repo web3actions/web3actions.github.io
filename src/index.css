@@ -5,7 +5,14 @@
 @tailwind utilities;
 
 @layer base {
+  body {
+    @apply overflow-x-hidden
+  }
   a, button {
+    @apply transition-all;
+  }
+
+  input {
     @apply transition-all;
   }
 }

@@ -17,7 +17,7 @@
         <div>
           <input
             type="text"
-            class="w-full text-white border-0 focus:border-white ring-1 ring-white ring-opacity-70 focus:ring-4 focus:ring-white p-5 bg-transparent rounded-xl placeholder-white placeholder-opacity-70 transition-all"
+            class="w-full text-white border-0 focus:border-white ring-1 ring-white ring-opacity-70 focus:ring-4 focus:ring-white p-5 bg-transparent rounded-xl placeholder-white placeholder-opacity-70"
             placeholder="https://github.com/.../.../issues/..."
           />
           <a href="https://ethbooster.github.io" target="__blank" class="border-0 font-extrabold font-booster inline-block text-indigo-600 bg-gray-50 hover:bg-white rounded-xl text-xl px-8 py-3 mt-5">
