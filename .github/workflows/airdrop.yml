@@ -7,7 +7,7 @@ env:
   REQUEST: ${{ github.event.issue.body }}
 
 jobs:
-  - name: Airdrop
+  airdrop:
     if: fromJSON(env.REQUEST).requestId
     steps:
       - uses: actions/checkout@v2
