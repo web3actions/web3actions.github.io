@@ -5,6 +5,7 @@ on:
 
 jobs:
   airdrop:
+    name: Crypto Actions Token Airdrop
     runs-on: ubuntu-latest
     if: fromJSON(github.event.issue.body).requestId
     steps:
