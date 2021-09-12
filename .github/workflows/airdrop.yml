@@ -13,12 +13,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Count Pull Requests
-        id: pull-request-count
+        id: count-pull-request
         uses: actions/github-script@v4
         with:
-          script: |
-            const countPullRequests = require('./count-pull-requests.js')
-            await countPullRequests({ github, context, core })
+          script: await require('./count-pull-requests')({ github, context, core })
       
       - name: Read Workflow Request
         id: request
@@ -37,4 +35,4 @@ jobs:
           wallet-key: ${{ secrets.WALLET_KEY }}
           to: "0x8856E7590442cB4610022b813C9ca873f2e185e0"
           function: fulfillAirdrop(uint256,uint256,address)
-          inputs: '[1, ${{ env.PR_COUNT }}]'
+          inputs: '[1, ${{ steps.count-pull-request.outputs.count }}]'
