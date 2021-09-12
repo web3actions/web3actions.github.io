@@ -19,7 +19,7 @@ jobs:
       
       - name: Read Workflow Request
         id: request
-        uses: cryptoactions/tx@0a51a4099a6d9d011a7a710a9d63d2fa00fb2f04
+        uses: cryptoactions/tx@main
         with:
           rpc-node: ${{ secrets.RPC_NODE }}
           contract: "0x8856E7590442cB4610022b813C9ca873f2e185e0"
@@ -31,7 +31,7 @@ jobs:
         if: |
           fromJSON(steps.request.outputs.result).fulfilled == 'false' &&
           fromJSON(steps.request.outputs.result).githubUserId == github.event.issue.author.node_id
-        uses: cryptoactions/tx@0a51a4099a6d9d011a7a710a9d63d2fa00fb2f04
+        uses: cryptoactions/tx@main
         with:
           rpc-node: ${{ secrets.RPC_NODE }}
           wallet-key: ${{ secrets.WALLET_KEY }}
