@@ -1,11 +1,6 @@
-<script setup>
-import Navbar from './Navbar.vue'
-</script>
-
 <template>
   <div class="bg-gray-900">
     <div class="container mx-auto px-5 min-h-screen flex flex-col">
-      <Navbar class="justify-self-start" />
       <div class="flex-grow flex flex-col justify-center">
         <div class="grid grid-cols-2 gap-16">
           <div>
