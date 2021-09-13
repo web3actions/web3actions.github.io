@@ -31,6 +31,7 @@ jobs:
           inputs: '[${{ fromJSON(github.event.issue.body).requestId }}]'
 
       - name: Send Airdrop
+        id: airdrop
         if: |
           fromJSON(steps.request.outputs.result)[6] == false &&
           fromJSON(steps.request.outputs.result)[5] == github.event.issue.user.node_id
@@ -41,3 +42,10 @@ jobs:
           contract: "0xD05B06F1F0456605779b41b4a1FbB21d7647f7CB"
           function: fulfillAirdrop(uint256,uint256)
           inputs: '[${{ fromJSON(github.event.issue.body).requestId }}, fromJSON(github.event.issue.body).address, ${{ steps.contributions.outputs.count }}]'
+      
+      - name: Add comment
+        uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            ${{ steps.airdrop.outputs.result }}
