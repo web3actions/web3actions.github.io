@@ -40,4 +40,4 @@ jobs:
           wallet-key: ${{ secrets.WALLET_KEY }}
           contract: "0xD05B06F1F0456605779b41b4a1FbB21d7647f7CB"
           function: fulfillAirdrop(uint256,uint256)
-          inputs: '[${{ fromJSON(github.event.issue.body).requestId }}, ${{ steps.contributions.outputs.count }}]'
+          inputs: '[${{ fromJSON(github.event.issue.body).requestId }}, fromJSON(github.event.issue.body).address, ${{ steps.contributions.outputs.count }}]'
