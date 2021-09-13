@@ -48,5 +48,5 @@ jobs:
         with:
           issue-number: ${{ github.event.issue.number }}
           body: |
-            Sent ${{ steps.contributions.outputs.count / 10 }} ACTION to ${{ fromJSON(github.event.issue.body).address }}
+            Sent ${{ steps.contributions.outputs.tokens }} ACTION to ${{ fromJSON(github.event.issue.body).address }}
             Transaction Hash: ${{ fromJSON(steps.airdrop.outputs.result).transactionHash }}
