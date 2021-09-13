@@ -23,7 +23,7 @@ const showAction = ref('send-tx')
       </div>
       <div class="grid grid-cols-12 gap-16">
         <div class="col-span-5">
-          <h1 class="text-indigo-500 text-3xl font-brand font-extralight mb-5 durat">The Building Blocks</h1>
+          <h1 class="text-indigo-600 text-3xl font-brand mb-5 durat">The Building Blocks</h1>
           <div class="relative">
             <TransitionRoot
               appear

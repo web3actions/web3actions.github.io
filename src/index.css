@@ -19,10 +19,10 @@
 
 @layer components {
   .nav-item {
-    @apply hover:bg-indigo-100 text-indigo-600 rounded-xl px-3 py-2 font-bold
+    @apply hover:bg-indigo-100 text-indigo-700 rounded-xl px-3 py-2 font-bold
   }
 
   .nav-item.active {
-    @apply hover:bg-indigo-600 bg-indigo-600 text-white
+    @apply hover:bg-indigo-700 bg-indigo-700 text-white
   }
 }

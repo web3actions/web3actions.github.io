@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-indigo-700">
+  <div class="bg-indigo-900">
     <div class="mx-auto max-w-xl px-5 min-h-screen flex flex-col">
       <div class="flex-grow flex flex-col justify-center text-center">
         <h1 class="text-white text-opacity-50 text-3xl font-brand font-extralight mb-10">Built with Crypto Actions</h1>
