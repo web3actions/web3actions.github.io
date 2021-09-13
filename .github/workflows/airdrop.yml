@@ -10,17 +10,13 @@ jobs:
     if: fromJSON(github.event.issue.body).requestId
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 14
-      - run: npm ci
 
       - name: Count Contributions
         id: contributions
         uses: actions/github-script@v4
         with:
           script: |
-            import count from './.github/workflows/count-contributions'
+            const count = require('./.github/workflows/count-contributions')
             await count({ github, context, core })
       
       - name: Read Workflow Request
