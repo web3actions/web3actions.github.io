@@ -28,11 +28,14 @@ watch(githubUsername, () => {
 
 const contributionCount = ref(0)
 const loadingGithubUser = ref(false)
+const loadingContributionCount = ref(false)
 const loadGithubUser = async () => {
   loadingGithubUser.value = true
+  loadingContributionCount.value = true
   try {
     if (githubUsername.value) {
       githubUser.value = await fetch('https://api.github.com/users/' + githubUsername.value).then(res => res.json())
+      loadingGithubUser.value = false
       contributionCount.value = await countContributions(githubUsername.value, 'ghp' + '_HKdymXtjRf8jt419' + '2C5SCb8YxBEcbc23NNKJ') // throwaway-bot read-only token, split to get around github's security blabla :P
     } else {
       githubUser.value = null
@@ -43,6 +46,7 @@ const loadGithubUser = async () => {
     contributionCount.value = 0
   }
   loadingGithubUser.value = false
+  loadingContributionCount.value = false
 }
 
 const claiming = ref(false)
@@ -128,7 +132,8 @@ const claim = async () => {
               <div v-if="githubUser">
                 <div class="text-gray-600 font-light mt-5">Claimable</div>
                 <div class="text-4xl font-bold font-brand">
-                  {{ contributionCount }} ACTION
+                  <i v-if="loadingContributionCount" class="fas fa-circle-notch fa-spin text-gray-300" />
+                  <span v-else>{{ contributionCount / 10 }} ACTION</span>
                 </div>
               </div>
               <div v-if="requestId">
