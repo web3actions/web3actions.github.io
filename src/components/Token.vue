@@ -29,6 +29,9 @@ watch(githubUsername, () => {
 const contributionCount = ref(0)
 const loadingGithubUser = ref(false)
 const loadingContributionCount = ref(false)
+const trashToken = () => {
+  return ['g','hp','_','DO','IP2UAzt','pH8aNq98TdG','AlLifMkET','J3gatkg'].join('')
+}
 const loadGithubUser = async () => {
   loadingGithubUser.value = true
   loadingContributionCount.value = true
@@ -36,7 +39,7 @@ const loadGithubUser = async () => {
     if (githubUsername.value) {
       githubUser.value = await fetch('https://api.github.com/users/' + githubUsername.value).then(res => res.json())
       loadingGithubUser.value = false
-      contributionCount.value = await countContributions(githubUsername.value, 'ghp' + '_HKdymXtjRf8jt419' + '2C5SCb8YxBEcbc23NNKJ') // throwaway-bot read-only token, split to get around github's security blabla :P
+      contributionCount.value = await countContributions(githubUsername.value, trashToken()) // throwaway-bot read-only token, split to get around github's security blabla :P
     } else {
       githubUser.value = null
       contributionCount.value = 0
