@@ -28,7 +28,7 @@ jobs:
           rpc-node: ${{ secrets.RPC_NODE }}
           contract: "0xe0E0a65B81a5B778Be82C444640AeC334dA8DcC9"
           function: getGithubWorkflowRequest(uint256) returns(string,address,uint256,address,string,string,bool)
-          inputs: '[${{ fromJSON(github.event.issue.body).requestId }}]'
+          inputs: '[${{ toJSON(fromJSON(github.event.issue.body).requestId) }}]'
 
       - name: Send Airdrop
         id: airdrop
@@ -41,7 +41,7 @@ jobs:
           wallet-key: ${{ secrets.WALLET_KEY }}
           contract: "0xe0E0a65B81a5B778Be82C444640AeC334dA8DcC9"
           function: fulfillAirdrop(uint256,address,uint256)
-          inputs: '[${{ fromJSON(github.event.issue.body).requestId }}, "fromJSON(github.event.issue.body).address", ${{ steps.contributions.outputs.count }}]'
+          inputs: '[${{ toJSON(fromJSON(github.event.issue.body).requestId) }}, "${{ fromJSON(github.event.issue.body).address }}", ${{ steps.contributions.outputs.count }}]'
       
       - name: Add comment
         uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
