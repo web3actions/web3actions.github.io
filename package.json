@@ -9,7 +9,7 @@
     "deploy": "push-dir --dir=dist --branch=gh-pages"
   },
   "dependencies": {
-    "@cryptoactions/sdk": "0.0.3",
+    "@cryptoactions/sdk": "0.0.4",
     "@headlessui/vue": "^1.4.1",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.3",
