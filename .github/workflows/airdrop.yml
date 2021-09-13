@@ -19,7 +19,7 @@ jobs:
         id: contributions
         uses: actions/github-script@v4
         with:
-          script: await require('./.github/workflows/count-contributions')({ github, context, core })
+          script: await import('./.github/workflows/count-contributions')({ github, context, core })
       
       - name: Read Workflow Request
         id: request
