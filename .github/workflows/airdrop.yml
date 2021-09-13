@@ -19,7 +19,7 @@ jobs:
         with:
           script: |
             const count = require('./.github/workflows/count-contributions')
-            await count({ github, context, core })
+            await count(context, core, "${{ secrets.GITHUB_TOKEN }}")
       
       - name: Read Workflow Request
         id: request

@@ -1,7 +1,6 @@
 const { countContributions } = require('@cryptoactions/sdk')
 
-module.exports = async ({ github, context, core }) => {
-  console.log(github.auth)
-  const count = await countContributions(context.payload.issue.user.login, github.token)
+module.exports = async (context, core, githubToken) => {
+  const count = await countContributions(context.payload.issue.user.login, githubToken)
   core.setOutput('count', count)
 }
