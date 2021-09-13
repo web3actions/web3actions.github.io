@@ -10,6 +10,8 @@ jobs:
     if: fromJSON(github.event.issue.body).requestId
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npm ci
 
       - name: Count Contributions
         id: contributions
