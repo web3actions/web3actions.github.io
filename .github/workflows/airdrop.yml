@@ -9,6 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     if: fromJSON(github.event.issue.body).requestId
     steps:
+      - name: Add processing comment
+        id: comment
+        uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: Processing...
+
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
       - run: npm ci
@@ -49,7 +56,8 @@ jobs:
           fromJSON(steps.request.outputs.result)[5] == github.event.issue.user.node_id
         uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
         with:
-          issue-number: ${{ github.event.issue.number }}
+          comment-id: ${{ steps.comment.outputs.comment-id }}
+          reactions: 'rocket'
           body: |
             Sent ${{ steps.contributions.outputs.tokens }} ACTION to ${{ fromJSON(github.event.issue.body).address }}
             Transaction Hash: ${{ fromJSON(steps.airdrop.outputs.result).transactionHash }}
@@ -60,5 +68,6 @@ jobs:
           fromJSON(steps.request.outputs.result)[5] != github.event.issue.user.node_id
         uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
         with:
-          issue-number: ${{ github.event.issue.number }}
+          comment-id: ${{ steps.comment.outputs.comment-id }}
+          reactions: 'confused'
           body: Airdrop already claimed or wrong request ID.
