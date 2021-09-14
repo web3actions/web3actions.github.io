@@ -6,6 +6,7 @@ import airdropAbi from '../airdrop.json'
 
 const ethEnabled = !!window.ethereum
 const ethAccount = ref(null)
+const tokenAddress = import.meta.env.VITE_APP_TOKEN_ADDRESS
 
 const ethProvider = new ethers.providers.Web3Provider(window.ethereum)
 const ethSigner = ethProvider.getSigner()
@@ -97,7 +98,7 @@ const claim = async () => {
             </p>
             <div class="mt-10 text-center">
               <div class="space-x-5">
-                <a href="#" class="border inline-block border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
+                <a :href="'https://kovan.etherscan.io/token/' + tokenAddress" target="__blank" class="border inline-block border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
                   <i class="fab fa-ethereum" /> Contract
                 </a>
                 <a href="https://github.com/cryptoactions/cryptoactions.github.io/discussions" target="__blank" class="border inline-block border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
