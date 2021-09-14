@@ -10,7 +10,7 @@
       <a href="https://github.com/cryptoactions" target="__blank" class="border-0 inline-block text-indigo-500 hover:bg-indigo-50 hover:text-indigo-700 rounded-xl text-xl px-4 py-3">
         <i class="fab fa-github" />
       </a>
-      <a href="https://twitter.com/@cryptoactions" target="__blank" class="border-0 inline-block text-indigo-500 hover:bg-indigo-50 hover:text-indigo-700 rounded-xl text-xl px-4 py-3">
+      <a href="https://twitter.com/@ethbooster" target="__blank" class="border-0 inline-block text-indigo-500 hover:bg-indigo-50 hover:text-indigo-700 rounded-xl text-xl px-4 py-3">
         <i class="fab fa-twitter" />
       </a>
     </div>
