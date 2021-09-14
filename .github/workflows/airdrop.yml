@@ -45,8 +45,8 @@ jobs:
       
       - name: Add comment
         uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
+        env:
+          RESULT_BODY: "Sent ${{ steps.contributions.outputs.tokens }} ACTION to ${{ fromJSON(github.event.issue.body).address }}\nTransaction Hash: ${{ fromJSON(steps.airdrop.outputs.result).transactionHash }}"
         with:
           issue-number: ${{ github.event.issue.number }}
-          body: |
-            Sent ${{ steps.contributions.outputs.tokens }} ACTION to ${{ fromJSON(github.event.issue.body).address }}
-            Transaction Hash: ${{ fromJSON(steps.airdrop.outputs.result).transactionHash }}
+          body: ${{ env.RESULT_BODY }}
