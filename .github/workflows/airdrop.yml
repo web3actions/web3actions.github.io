@@ -58,6 +58,7 @@ jobs:
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
           reactions: 'rocket'
+          edit-mode: replace
           body: |
             Sent ${{ steps.contributions.outputs.tokens }} ACTION to ${{ fromJSON(github.event.issue.body).address }}
             Transaction Hash: ${{ fromJSON(steps.airdrop.outputs.result).transactionHash }}
@@ -70,4 +71,5 @@ jobs:
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
           reactions: 'confused'
+          edit-mode: replace
           body: Airdrop already claimed or wrong request ID.
