@@ -7,10 +7,10 @@
           <div>
             <h1 class="text-indigo-900 text-3xl font-brand mb-5">Web3 Actions</h1>
             <h2 class="leading-tight text-gray-50 text-6xl font-brand font-extrabold">
-              Integrate crypto payments right into your CI/CD workflows.
+              DevOps meets Crypto
             </h2>
             <p class="leading-relaxed text-indigo-300 text-opacity-90 text-2xl mt-5">
-              Web3 Actions is based on the simple idea of connecting CI/CD workflows and crypo wallets. This opens up a lot of potential for completely automated and customized payment workflows for open source projects.
+              Web3 Actions are building blocks that connect your CI/CD workflows with your crypto wallets and smart contracts. This unlocks a lot of potential for automated and completely customizable payment workflows for open source projects.
             </p>
           </div>
           <div class="flex justify-center items-center">
