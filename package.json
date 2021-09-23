@@ -1,5 +1,5 @@
 {
-  "name": "cryptoactions.github.io",
+  "name": "web3actions.github.io",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -8,7 +8,7 @@
     "deploy": "push-dir --dir=dist --branch=gh-pages"
   },
   "dependencies": {
-    "@cryptoactions/sdk": "0.0.6",
+    "@web3actions/sdk": "0.0.6",
     "@headlessui/vue": "^1.4.1",
     "@tailwindcss/aspect-ratio": "^0.2.1",
     "@tailwindcss/forms": "^0.3.3",

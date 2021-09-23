@@ -65,7 +65,7 @@ const showAction = ref('send-tx')
                 Crypto Config
               </h2>
               <p class="leading-8 text-gray-500 text-2xl mt-5">
-                Read from a repositories cryptoactions.json file or a "cryptoactions" section in the package.json.<br />
+                Read from a repositories web3actions.json file or a "web3actions" section in the package.json.<br />
                 <br />
                 Users can have their config at username/username.
               </p>

@@ -2,7 +2,7 @@
   <div class="bg-indigo-900">
     <div class="mx-auto max-w-xl px-5 min-h-screen flex flex-col">
       <div class="flex-grow flex flex-col justify-center text-center">
-        <h1 class="text-white text-opacity-50 text-3xl font-brand font-extralight mb-10">Built with Crypto Actions</h1>
+        <h1 class="text-white text-opacity-50 text-3xl font-brand font-extralight mb-10">Built with Web3 Actions</h1>
         <h2 class="text-gray-50 text-6xl font-booster font-extrabold">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 inline-block opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" />

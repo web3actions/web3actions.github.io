@@ -1,11 +1,11 @@
-name: Crypto Actions Token Airdrop
+name: Web3 Actions Token Airdrop
 on:
   issues:
     types: [ opened ]
 
 jobs:
   airdrop:
-    name: Crypto Actions Token Airdrop
+    name: Web3 Actions Token Airdrop
     runs-on: ubuntu-latest
     if: fromJSON(github.event.issue.body).requestId
     steps:
@@ -30,7 +30,7 @@ jobs:
       
       - name: Read Workflow Request
         id: request
-        uses: cryptoactions/tx@main
+        uses: web3actions/tx@main
         with:
           rpc-node: ${{ secrets.RPC_NODE }}
           contract: "0xe0E0a65B81a5B778Be82C444640AeC334dA8DcC9"
@@ -42,7 +42,7 @@ jobs:
         if: |
           fromJSON(steps.request.outputs.result)[6] == false &&
           fromJSON(steps.request.outputs.result)[5] == github.event.issue.user.node_id
-        uses: cryptoactions/tx@main
+        uses: web3actions/tx@main
         with:
           rpc-node: ${{ secrets.RPC_NODE }}
           wallet-key: ${{ secrets.WALLET_KEY }}

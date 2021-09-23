@@ -5,12 +5,12 @@
       <div class="flex-grow flex flex-col justify-center">
         <div class="grid grid-cols-2 gap-16">
           <div>
-            <h1 class="text-indigo-900 text-3xl font-brand mb-5">Crypto Actions</h1>
+            <h1 class="text-indigo-900 text-3xl font-brand mb-5">Web3 Actions</h1>
             <h2 class="leading-tight text-gray-50 text-6xl font-brand font-extrabold">
               Integrate crypto payments right into your CI/CD workflows.
             </h2>
             <p class="leading-relaxed text-indigo-300 text-opacity-90 text-2xl mt-5">
-              Crypto Actions is based on the simple idea of connecting CI/CD workflows and crypo wallets. This opens up a lot of potential for completely automated and customized payment workflows for open source projects.
+              Web3 Actions is based on the simple idea of connecting CI/CD workflows and crypo wallets. This opens up a lot of potential for completely automated and customized payment workflows for open source projects.
             </p>
           </div>
           <div class="flex justify-center items-center">

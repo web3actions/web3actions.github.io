@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed, watch } from 'vue'
 import { ethers } from 'ethers'
-import { countContributions } from '@cryptoactions/sdk'
+import { countContributions } from '@web3actions/sdk'
 import airdropAbi from '../airdrop.json'
 
 const ethEnabled = !!window.ethereum
@@ -56,7 +56,7 @@ const loadGithubUser = async () => {
 const claiming = ref(false)
 const requestId = ref(null)
 const ethAirdropReceiver = ref('')
-const airdropLink = computed(() => `https://github.com/cryptoactions/cryptoactions.github.io/issues/new?title=Airdrop&body={%22requestId%22:${JSON.stringify(requestId.value)},%22address%22:%22${ethAirdropReceiver.value || 'YOUR_ADDRESS'}%22}`)
+const airdropLink = computed(() => `https://github.com/web3actions/web3actions.github.io/issues/new?title=Airdrop&body={%22requestId%22:${JSON.stringify(requestId.value)},%22address%22:%22${ethAirdropReceiver.value || 'YOUR_ADDRESS'}%22}`)
 const airdropLinkCopied = ref(false)
 const copyAirdropLink = () => {
   navigator.clipboard.writeText(airdropLink.value)
@@ -92,7 +92,7 @@ const claim = async () => {
               Action Token
             </h2>
             <p class="leading-8 text-gray-500 text-2xl mt-5">
-              The Crypto Actions Token (ACTION) is an ERC677 token, used to govern the organization, e.g. vote for official signers, and to promote issues in our <a href="https://github.com/cryptoactions?q=bountyfeed" target="__blank" class="text-indigo-600">bounty feeds</a>.<br />
+              The Web3 Actions Token (ACTION) is an ERC677 token, used to govern the organization, e.g. vote for official signers, and to promote issues in our <a href="https://github.com/web3actions?q=bountyfeed" target="__blank" class="text-indigo-600">bounty feeds</a>.<br />
               <br />
               It is held by the organization and airdropped to users who contributed on GitHub in the past.
             </p>
@@ -101,7 +101,7 @@ const claim = async () => {
                 <a :href="'https://kovan.etherscan.io/token/' + tokenAddress" target="__blank" class="border inline-block border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
                   <i class="fab fa-ethereum" /> Contract
                 </a>
-                <a href="https://github.com/cryptoactions/cryptoactions.github.io/discussions" target="__blank" class="border inline-block border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
+                <a href="https://github.com/web3actions/web3actions.github.io/discussions" target="__blank" class="border inline-block border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
                   </svg>

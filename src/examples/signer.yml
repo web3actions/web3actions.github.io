@@ -8,7 +8,7 @@ jobs:
     name: Sign Oracle Request
     runs-on: ubuntu-latest
     steps:
-      - uses: cryptoactions/signer@main
+      - uses: web3actions/signer@main
         with:
           github-token: ${{ secrets.PAT }}
           rpc-node: ${{ secrets.RPC_NODE }}
