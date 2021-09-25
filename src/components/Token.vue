@@ -82,7 +82,7 @@ const claim = async () => {
 }
 </script>
 <template>
-  <div class="bg-gray-50">
+  <div>
     <div class="container mx-auto px-5 min-h-screen flex flex-col">
       <div class="flex-grow flex flex-col justify-center">
         <div class="grid grid-cols-12 gap-16">
