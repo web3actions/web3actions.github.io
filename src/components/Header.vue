@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full absolute z-0 top-0 left-0 bg-white">
+  <div class="w-full absolute z-0 top-0 left-0 bg-indigo-50">
     <div class="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-transparent to-white"></div>
     <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" class="opacity-25">
     <defs>
@@ -25,7 +25,7 @@
             <h2 class="leading-tight text-green-100 text-6xl font-brand font-extrabold mix-blend-difference">
               DevOps meets Crypto
             </h2>
-            <p class="leading-relaxed text-red-600 text-2xl mt-5 mix-blend-difference">
+            <p class="leading-relaxed text-indigo-900 text-2xl mt-5 mix-blend-color-burn">
               Web3 Actions are the building blocks that connect your GitHub workflows with your crypto wallets and smart contracts. This unlocks a lot of potential for automated and completely customizable payment workflows for open source projects.
             </p>
           </div>
