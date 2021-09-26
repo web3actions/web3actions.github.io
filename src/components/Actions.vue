@@ -9,7 +9,7 @@ const showAction = ref('tx')
 </script>
 
 <template>
-  <div class="z-10 relative">
+  <div class="z-10 relative bg-white bg-opacity-25">
     <div class="container mx-auto px-5 min-h-screen flex flex-col">
       <div class="bg-white bg-opacity-25 p-1 rounded-xl my-28 mx-auto space-x-2">
         <button @click="showAction = 'tx'" :class="['nav-item', { active: showAction === 'tx' }]">tx</button>
@@ -39,9 +39,9 @@ const showAction = ref('tx')
                 <br />
                 Create simple bounties, scheduled payments or build complex contracting workflows and get each run verified by external signers.
               </p>
-              <div class="mt-10 text-center">
-                <a href="#" class="border border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
-                  <i class="fab fa-github" /> Go to repository
+              <div class="mt-24 text-center">
+                <a href="#" class="shadow text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
+                  <i class="fab fa-github" /> Readme
                 </a>
               </div>
             </TransitionRoot>
@@ -57,14 +57,19 @@ const showAction = ref('tx')
               class="absolute"
             >
               <h2 class="text-gray-900 text-6xl font-brand font-extrabold">
-                Signer
+                Workflow Signer
               </h2>
               <p class="leading-8 text-gray-500 text-2xl mt-5">
-                Earn fees for signing GitHub data for other apps.
+                Repositories can sign each others workflow runs.<br />
+                <br />
+                Based on the workflow's file hash, a contract can verify the signature,
+                making the workflow the off-chain part of a hybrid smart contract.<br />
+                <br />
+                Signers may charge a fee, which can be payed in W3ACT tokens.
               </p>
-              <div class="mt-10 text-center">
-                <a href="#" class="border border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
-                  <i class="fab fa-github" /> Go to repository
+              <div class="mt-24 text-center">
+                <a href="#" class="shadow text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
+                  <i class="fab fa-github" /> Readme
                 </a>
               </div>
             </TransitionRoot>
@@ -85,9 +90,9 @@ const showAction = ref('tx')
               <p class="leading-8 text-gray-500 text-2xl mt-5">
                 Pull price information via Chainlink into your workflows.
               </p>
-              <div class="mt-10 text-center">
-                <a href="#" class="border border-gray-300 text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
-                  <i class="fab fa-github" /> Go to repository
+              <div class="mt-24 text-center">
+                <a href="#" class="shadow text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
+                  <i class="fab fa-github" /> Readme
                 </a>
               </div>
             </TransitionRoot>
@@ -106,11 +111,7 @@ const showAction = ref('tx')
               leave-to="translate-x-16 opacity-0"
               class="absolute inset-0"
             >
-              <div class="text-indigo-900 rounded-3xl p-8 relative">
-                <button class="text-indigo-600 absolute top-5 right-5 border border-indigo-600 px-3 py-2 rounded-xl">
-                  <i class="far fa-copy" />
-                  copy
-                </button>
+              <div class="text-indigo-900 rounded-3xl p-8">
                 <pre v-highlightjs="exampleTx"><code class="yaml bg-transparent p-0"></code></pre>
               </div>
             </TransitionRoot>
@@ -125,11 +126,7 @@ const showAction = ref('tx')
               leave-to="translate-x-16 opacity-0"
               class="absolute inset-0"
             >
-              <div class="text-indigo-900 rounded-3xl p-8 relative">
-                <button class="text-indigo-600 absolute top-5 right-5 border border-indigo-600 px-3 py-2 rounded-xl">
-                  <i class="far fa-copy" />
-                  copy
-                </button>
+              <div class="text-indigo-900 rounded-3xl p-8">
                 <pre v-highlightjs="exampleSigner"><code class="yaml bg-transparent p-0"></code></pre>
               </div>
             </TransitionRoot>
@@ -144,11 +141,7 @@ const showAction = ref('tx')
               leave-to="translate-x-16 opacity-0"
               class="absolute inset-0"
             >
-              <div class="text-indigo-900 rounded-3xl p-8 relative">
-                <button class="text-indigo-600 absolute top-5 right-5 border border-indigo-600 px-3 py-2 rounded-xl">
-                  <i class="far fa-copy" />
-                  copy
-                </button>
+              <div class="text-indigo-900 rounded-3xl p-8">
                 <pre v-highlightjs="examplePriceFeeds"><code class="yaml bg-transparent p-0"></code></pre>
               </div>
             </TransitionRoot>

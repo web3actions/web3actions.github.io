@@ -1,5 +1,6 @@
 <template>
-  <div class="w-full h-screen absolute z-0 top-0 left-0 bg-white">
+  <div class="w-full absolute z-0 top-0 left-0 bg-white">
+    <div class="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-transparent to-white"></div>
     <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" class="opacity-25">
     <defs>
     <radialGradient id="Gradient1" cx="50%" cy="50%" fx="0.441602%" fy="50%" r=".5"><animate attributeName="fx" dur="34s" values="0%;3%;0%" repeatCount="indefinite"></animate><stop offset="0%" stop-color="rgba(255, 0, 255, 1)"></stop><stop offset="100%" stop-color="rgba(255, 0, 255, 0)"></stop></radialGradient>

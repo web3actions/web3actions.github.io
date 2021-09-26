@@ -1,16 +1,15 @@
-name: GitHub Data Signer
+name: GitHub Workflow Signer
 on:
   issues:
     types: [ opened ]
 
 jobs:
   sign:
-    name: Sign Oracle Request
+    name: Sign Workflow Run
     runs-on: ubuntu-latest
     steps:
-      - uses: web3actions/signer@main
+      - uses: web3actions/signer@edca6a44467709cf2674d1f1445daaafaf827864
         with:
-          github-token: ${{ secrets.PAT }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           rpc-node: ${{ secrets.RPC_NODE }}
           wallet-key: ${{ secrets.WALLET_KEY }}
-          contract-address: "0x257824C5857a3D72fb9a0401E33bcBD2F138AC6c"

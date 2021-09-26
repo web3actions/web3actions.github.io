@@ -1,18 +1,11 @@
-name: Price Feed
-on:
-  pull_request:
-    branches:
-      - main
-    types: [ closed ]
-
 jobs:
-  pay-contributor:
-    name: Pay Contributor
+  ethusd:
     runs-on: ubuntu-latest
-    if: ${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'payed') }}
+    outputs:
+      - price: ${{ steps.ethusd.outputs.price }}
     steps:
-      - uses: web3actions/send-tx@593fa08f4aaf9a4b206d3d7876cd6f8746093a4b
+      - name: Get ETH/USD Price Feed
+        uses: web3actions/price-feeds@9f8940cd7765840b000e934fdd89e46f6c15f717
+        id: ethusd
         with:
-          wallet-key: ${{ secrets.WALLET_KEY }}
-          to: github.event.pull_request.author.login
-          value: '50000000000000000'
+          rpc-node: ${{ secrets.RPC_NODE }}
