@@ -140,7 +140,7 @@ const claim = async () => {
                 <div class="text-gray-600 font-light mt-5">Claimable</div>
                 <div class="text-4xl font-bold font-brand">
                   <i v-if="loadingContributionCount" class="fas fa-circle-notch fa-spin text-gray-300" />
-                  <span v-else>{{ contributionCount / 10 }} ACTION</span>
+                  <span v-else>{{ contributionCount / 10 }} W3ACT</span>
                 </div>
               </div>
               <div v-if="requestId">

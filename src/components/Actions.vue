@@ -63,9 +63,7 @@ const showAction = ref('tx')
                 Repositories can sign each others workflow runs.<br />
                 <br />
                 Based on the workflow's file hash, a contract can verify the signature,
-                making the workflow the off-chain part of a hybrid smart contract.<br />
-                <br />
-                Signers may charge a fee, which can be payed in W3ACT tokens.
+                making the workflow the off-chain part of a hybrid smart contract.
               </p>
               <div class="mt-24 text-center">
                 <a href="#" class="shadow text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
