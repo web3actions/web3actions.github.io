@@ -118,12 +118,16 @@ const claim = async () => {
             <div class="text-5xl font-bold font-brand">1,000,000</div>
             <div class="flex space-x-10">
               <div class="text-center">
-                <div class="text-gray-600 font-light mt-5">Organization</div>
-                <div class="text-4xl font-bold font-brand">510,000</div>
+                <div class="text-gray-600 font-light mt-5">Team</div>
+                <div class="text-4xl font-bold font-brand">250,000</div>
               </div>
               <div class="text-center">
                 <div class="text-gray-600 font-light mt-5">Airdrop</div>
-                <div class="text-4xl font-bold font-brand">490,000</div>
+                <div class="text-4xl font-bold font-brand">250,000</div>
+              </div>
+              <div class="text-center">
+                <div class="text-gray-600 font-light mt-5">DAO Treasury</div>
+                <div class="text-4xl font-bold font-brand">500,000</div>
               </div>
             </div>
             <div v-if="ethEnabled" class="text-center flex flex-col">

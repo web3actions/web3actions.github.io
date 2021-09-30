@@ -37,10 +37,10 @@ const showAction = ref('tx')
               <p class="leading-8 text-gray-500 text-2xl mt-5">
                 Make any kind of transaction as part of your automation workflows.<br>
                 <br />
-                Create simple bounties, scheduled payments or build complex contracting workflows and get each run verified by external signers.
+                Run maintenance jobs, create simple bounties or build complex contracting workflows and get each run verified by external signers.
               </p>
               <div class="mt-24 text-center">
-                <a href="#" class="shadow text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
+                <a href="https://github.com/web3actions/tx" target="__blank" class="shadow text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
                   <i class="fab fa-github" /> Readme
                 </a>
               </div>
@@ -66,7 +66,7 @@ const showAction = ref('tx')
                 making the workflow the off-chain part of a hybrid smart contract.
               </p>
               <div class="mt-24 text-center">
-                <a href="#" class="shadow text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
+                <a href="https://github.com/web3actions/signer" target="__blank" class="shadow text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
                   <i class="fab fa-github" /> Readme
                 </a>
               </div>
@@ -89,7 +89,7 @@ const showAction = ref('tx')
                 Pull price information via Chainlink into your workflows.
               </p>
               <div class="mt-24 text-center">
-                <a href="#" class="shadow text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
+                <a href="https://github.com/web3actions/price-feeds" target="__blank" class="shadow text-gray-900 hover:bg-white rounded-xl text-xl px-4 py-3">
                   <i class="fab fa-github" /> Readme
                 </a>
               </div>

@@ -26,7 +26,7 @@
               DevOps meets Crypto
             </h2>
             <p class="leading-relaxed text-indigo-900 text-2xl mt-5 mix-blend-color-burn">
-              Web3 Actions are the building blocks that connect your GitHub workflows with your crypto wallets and smart contracts. This unlocks a lot of potential for automated and completely customizable payment workflows for open source projects.
+              Connect GitHub with your wallets and smart contracts and build completely custom, Ethereum-enabled automation workflows, right in your project's code base.
             </p>
           </div>
           <div class="flex justify-center items-center">
