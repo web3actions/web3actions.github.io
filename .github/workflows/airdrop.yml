@@ -17,6 +17,8 @@ jobs:
           body: Processing...
 
       - uses: actions/checkout@v2
+        with:
+          ref: "a36803eb19f7ffda60659ca06d97fd784d898678"
       - uses: actions/setup-node@v2
       - run: npm ci
 
