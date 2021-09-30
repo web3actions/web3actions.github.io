@@ -30,32 +30,31 @@ jobs:
             const count = require('./.github/workflows/count-contributions')
             await count(context, core, "${{ secrets.GITHUB_TOKEN }}")
       
-      - name: Read Workflow Request
-        id: request
+      - name: Check Payment
+        id: payment
         uses: web3actions/tx@main
         with:
-          rpc-node: ${{ secrets.RPC_NODE }}
+          network: kovan
+          infura-key: ${{ secrets.INFURA_KEY }}
           contract: "0xe0E0a65B81a5B778Be82C444640AeC334dA8DcC9"
-          function: getGithubWorkflowRequest(uint256) returns(string,address,uint256,address,string,string,bool)
-          inputs: '[${{ toJSON(fromJSON(github.event.issue.body).requestId) }}]'
+          function: isPayed(string) returns(bool)
+          inputs: '["${{ github.event.issue.user.node_id }}"]'
 
       - name: Send Airdrop
         id: airdrop
         if: |
-          fromJSON(steps.request.outputs.result)[6] == false &&
-          fromJSON(steps.request.outputs.result)[5] == github.event.issue.user.node_id
+          fromJSON(steps.payment.outputs.result)[0] == true
         uses: web3actions/tx@main
         with:
-          rpc-node: ${{ secrets.RPC_NODE }}
+          network: kovan
+          infura-key: ${{ secrets.INFURA_KEY }}
           wallet-key: ${{ secrets.WALLET_KEY }}
           contract: "0xe0E0a65B81a5B778Be82C444640AeC334dA8DcC9"
-          function: fulfillAirdrop(uint256,address,uint256)
-          inputs: '[${{ toJSON(fromJSON(github.event.issue.body).requestId) }}, "${{ fromJSON(github.event.issue.body).address }}", ${{ steps.contributions.outputs.count }}]'
+          function: fulfillAirdrop(uint256,address,uint256,uint256,bytes) # ...,uint256,bytes for run id and signature
+          inputs: '["${{ github.event.issue.user.node_id }}", "${{ fromJSON(github.event.issue.body).address }}", ${{ steps.contributions.outputs.count }}]'
       
       - name: Add success comment
-        if: |
-          fromJSON(steps.request.outputs.result)[6] == false &&
-          fromJSON(steps.request.outputs.result)[5] == github.event.issue.user.node_id
+        if: fromJSON(steps.payment.outputs.result)[0] == true
         uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
@@ -66,12 +65,10 @@ jobs:
             Transaction Hash: ${{ fromJSON(steps.airdrop.outputs.result).transactionHash }}
 
       - name: Add failure comment
-        if: |
-          fromJSON(steps.request.outputs.result)[6] == true ||
-          fromJSON(steps.request.outputs.result)[5] != github.event.issue.user.node_id
+        if: fromJSON(steps.payment.outputs.result)[0] == false
         uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
           reactions: 'confused'
           edit-mode: replace
-          body: Airdrop already claimed or wrong request ID.
+          body: Airdrop already claimed or oracle fee not payed for @${{ github.event.issue.user.login }}.
