@@ -172,14 +172,19 @@ const claim = async () => {
                 </div>
               </div>
               <div v-else>
-                <div class="text-left text-indigo-900 mt-5 mx-auto max-w-lg bg-indigo-50 rounded-3xl px-5 py-4">
-                  To verify the user's contributions and calculate and process the airdrop, our oracle needs to be payed.
-                  Cover that cost either for your own airdrop or a friend's GitHub account.
+                <div class="text-left bg-blue-50 text-blue-900 text-opacity-90 mt-10 mx-auto max-w-lg rounded-3xl px-5 py-4 flex items-center">
+                  <i class="fas fa-info text-6xl opacity-10 ml-2 mr-5" />
+                  <span>
+                    To calculate and process the airdrop based on the user's contributions,
+                    <a href="https://github.com/web3actions/web3actions.github.io/blob/main/.github/workflows/airdrop.yml" target="__blank"><u>our oracle workflow</u></a> needs to be payed.
+                    Cover that cost either for your own airdrop or a friend's GitHub account.
+                    Once payed, the airdrop can be triggered by posting an issue on GitHub.
+                  </span>
                 </div>
                 <button @click="claim" :disabled="!githubUser || claiming || !contributionCount" class="shadow inline-block mt-5 text-gray-50 bg-indigo-700 hover:bg-indigo-600 rounded-xl text-xl px-4 py-3 disabled:opacity-50">
                   <i v-if="claiming" class="fas fa-circle-notch fa-spin"></i>
                   <i v-else class="fas fa-hand-holding-usd"></i>
-                  Request Airdrop
+                  Request Airdrop <span v-if="githubUser">for @{{ githubUser.login }}</span>
                 </button>
               </div>
             </div>
