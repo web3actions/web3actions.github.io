@@ -10,7 +10,7 @@
       <a href="https://github.com/web3actions" target="__blank" class="inline-block text-gray-50 hover:bg-white hover:text-indigo-700 rounded-xl text-xl px-4 py-3">
         <i class="fab fa-github" />
       </a>
-      <a href="https://twitter.com/@ethbooster" target="__blank" class="inline-block text-gray-50 hover:bg-white hover:text-indigo-700 rounded-xl text-xl px-4 py-3">
+      <a href="https://twitter.com/@web3actions" target="__blank" class="inline-block text-gray-50 hover:bg-white hover:text-indigo-700 rounded-xl text-xl px-4 py-3">
         <i class="fab fa-twitter" />
       </a>
     </div>
