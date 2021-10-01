@@ -90,14 +90,14 @@ const claim = async () => {
           <div class="col-span-5">
             <h1 class="text-indigo-600 text-3xl font-brand mb-5">ERC677 Payable</h1>
             <h2 class="text-gray-900 text-6xl font-brand font-extrabold">
-              Action Token
+              Token
             </h2>
             <p class="leading-8 text-gray-500 text-2xl mt-5">
               The Web3 Actions Token (W3ACT) is an ERC677 token, that can be send alongside Ether.<br />
               <br />
-              It is used to govern the organization, e.g. vote for official signers, and to promote issues in our <a href="https://github.com/web3actions?q=bountyfeed" target="__blank" class="text-indigo-600">bounty feeds</a>.<br />
+              It will be used to govern the organization, e.g. vote for official signers, and promote bounties.<br />
               <br />
-              It is held by the organization and airdropped to users who contributed on GitHub in the past.
+              The total supply is split between the team and the community, based on a GitHub user's activity.
             </p>
             <div class="mt-24 text-center">
               <div class="space-x-5">
@@ -119,15 +119,11 @@ const claim = async () => {
             <div class="flex space-x-10">
               <div class="text-center">
                 <div class="text-gray-600 font-light mt-5">Team</div>
-                <div class="text-4xl font-bold font-brand">250,000</div>
+                <div class="text-4xl font-bold font-brand">420,000</div>
               </div>
               <div class="text-center">
-                <div class="text-gray-600 font-light mt-5">Airdrop</div>
-                <div class="text-4xl font-bold font-brand">250,000</div>
-              </div>
-              <div class="text-center">
-                <div class="text-gray-600 font-light mt-5">DAO Treasury</div>
-                <div class="text-4xl font-bold font-brand">500,000</div>
+                <div class="text-gray-600 font-light mt-5">Community</div>
+                <div class="text-4xl font-bold font-brand">580,000</div>
               </div>
             </div>
             <div v-if="ethEnabled" class="text-center flex flex-col">
