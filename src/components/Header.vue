@@ -28,6 +28,9 @@
             <p class="leading-relaxed text-indigo-900 text-2xl mt-5 mix-blend-color-burn">
               Connect GitHub with your wallets and smart contracts and build completely custom, Ethereum-enabled automation workflows, right in your project's code base.
             </p>
+            <p class="border-4 border-red-900 text-red-900 rounded-xl p-5 mt-10 border-opacity-30 text-center mix-blend-color-burn">
+              Please make sure your are connected to the <b>Kovan</b> test network!
+            </p>
           </div>
           <div class="flex justify-center items-center">
             <div class="w-3/4">
