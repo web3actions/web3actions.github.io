@@ -7,11 +7,12 @@ import airdropAbi from '../airdrop.json'
 const ethEnabled = !!window.ethereum
 const ethAccount = ref(null)
 const tokenAddress = import.meta.env.VITE_APP_TOKEN_ADDRESS
+const airdropAddress = import.meta.env.VITE_APP_AIRDROP_ADDRESS
 
 const ethProvider = new ethers.providers.Web3Provider(window.ethereum)
 const ethSigner = ethProvider.getSigner()
 const airdrop = new ethers.Contract(
-  import.meta.env.VITE_APP_AIRDROP_ADDRESS,
+  airdropAddress,
   airdropAbi.abi,
   ethProvider
 )
@@ -102,7 +103,10 @@ const claim = async () => {
             <div class="mt-24 text-center">
               <div class="space-x-5">
                 <a :href="'https://kovan.etherscan.io/token/' + tokenAddress" target="__blank" class="shadow inline-block text-gray-900 bg-white rounded-xl text-xl px-4 py-3">
-                  <i class="fab fa-ethereum" /> Contract
+                  <i class="fab fa-ethereum" /> Token
+                </a>
+                <a :href="'https://kovan.etherscan.io/address/' + airdropAddress" target="__blank" class="shadow inline-block text-gray-900 bg-white rounded-xl text-xl px-4 py-3">
+                  <i class="fab fa-ethereum" /> Airdrop
                 </a>
                 <a href="https://github.com/web3actions/web3actions.github.io/discussions" target="__blank" class="shadow inline-block text-gray-900 bg-white rounded-xl text-xl px-4 py-3">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
