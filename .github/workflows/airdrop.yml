@@ -3,6 +3,9 @@ on:
   issues:
     types: [ opened ]
 
+env:
+  AIRDROP_CONTRACT: "0x1acFcECD2A02059d9c3f4135F68E0EC93Ef6B3e3"
+
 jobs:
   airdrop:
     name: Web3 Actions Token Airdrop
@@ -18,7 +21,7 @@ jobs:
 
       - uses: actions/checkout@v2
         with:
-          ref: "a36803eb19f7ffda60659ca06d97fd784d898678"
+          ref: "2d9bb5b39e66c9ab872c47c3d1c5005911407549"
       - uses: actions/setup-node@v2
       - run: npm ci
 
@@ -32,11 +35,11 @@ jobs:
       
       - name: Check Payment
         id: payment
-        uses: web3actions/tx@main
+        uses: web3actions/tx@3c441843e6883dca4b0889991e2e5d0bacf7e929
         with:
           network: kovan
           infura-key: ${{ secrets.INFURA_KEY }}
-          contract: "0xe0E0a65B81a5B778Be82C444640AeC334dA8DcC9"
+          contract: ${{ secrets.AIRDROP_CONTRACT }}
           function: isPayed(string) returns(bool)
           inputs: '["${{ github.event.issue.user.node_id }}"]'
 
@@ -44,12 +47,12 @@ jobs:
         id: airdrop
         if: |
           fromJSON(steps.payment.outputs.result)[0] == true
-        uses: web3actions/tx@main
+        uses: web3actions/tx@3c441843e6883dca4b0889991e2e5d0bacf7e929
         with:
           network: kovan
           infura-key: ${{ secrets.INFURA_KEY }}
           wallet-key: ${{ secrets.WALLET_KEY }}
-          contract: "0xe0E0a65B81a5B778Be82C444640AeC334dA8DcC9"
+          contract: ${{ secrets.AIRDROP_CONTRACT }}
           function: fulfillAirdrop(uint256,address,uint256,uint256,bytes) # ...,uint256,bytes for run id and signature
           inputs: '["${{ github.event.issue.user.node_id }}", "${{ fromJSON(github.event.issue.body).address }}", ${{ steps.contributions.outputs.count }}]'
       
