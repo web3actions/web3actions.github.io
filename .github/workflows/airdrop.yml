@@ -39,7 +39,7 @@ jobs:
         with:
           network: kovan
           infura-key: ${{ secrets.INFURA_KEY }}
-          contract: ${{ secrets.AIRDROP_CONTRACT }}
+          contract: ${{ env.AIRDROP_CONTRACT }}
           function: isPayed(string) returns(bool)
           inputs: '["${{ github.event.issue.user.node_id }}"]'
 
@@ -52,7 +52,7 @@ jobs:
           network: kovan
           infura-key: ${{ secrets.INFURA_KEY }}
           wallet-key: ${{ secrets.WALLET_KEY }}
-          contract: ${{ secrets.AIRDROP_CONTRACT }}
+          contract: ${{ env.AIRDROP_CONTRACT }}
           function: fulfillAirdrop(uint256,address,uint256,uint256,bytes) # ...,uint256,bytes for run id and signature
           inputs: '["${{ github.event.issue.user.node_id }}", "${{ fromJSON(github.event.issue.body).address }}", ${{ steps.contributions.outputs.count }}]'
       
