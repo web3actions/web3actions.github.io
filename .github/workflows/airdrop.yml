@@ -10,7 +10,7 @@ jobs:
   airdrop:
     name: Web3 Actions Token Airdrop
     runs-on: ubuntu-latest
-    if: ${{ contains(github.event.issue.labels.*.name, 'airdrop') }}
+    if: ${{ startsWith(github.event.issue.title, "Airdrop for ") }}
     steps:
       - name: Add processing comment
         id: comment

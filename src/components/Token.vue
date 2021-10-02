@@ -57,7 +57,7 @@ const loadGithubUser = async () => {
 const claiming = ref(false)
 const airdropPaid = ref(false)
 const ethAirdropReceiver = ref('')
-const airdropLink = computed(() => `https://github.com/web3actions/web3actions.github.io/issues/new?labels=airdrop&template=airdrop.md&title=Airdrop&body=${JSON.stringify({address: ethAirdropReceiver.value})}`)
+const airdropLink = computed(() => `https://github.com/web3actions/web3actions.github.io/issues/new?title=Airdrop for ${githubUsername.value}&body=${JSON.stringify({address: ethAirdropReceiver.value})}`)
 const airdropLinkCopied = ref(false)
 const copyAirdropLink = () => {
   navigator.clipboard.writeText(airdropLink.value)
