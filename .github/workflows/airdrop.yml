@@ -57,6 +57,7 @@ jobs:
           inputs: '["${{ github.event.issue.user.node_id }}", "${{ fromJSON(github.event.issue.body).address }}", ${{ steps.contributions.outputs.count }}]'
           signer: web3actions/signer
           github-token: ${{ secrets.PAT }}
+          gas-limit: 50000
       
       - name: Add success comment
         if: fromJSON(steps.payment.outputs.result)[0] == true
