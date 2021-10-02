@@ -53,7 +53,7 @@ jobs:
           infura-key: ${{ secrets.INFURA_KEY }}
           wallet-key: ${{ secrets.WALLET_KEY }}
           contract: ${{ env.AIRDROP_CONTRACT }}
-          function: fulfillAirdrop(uint256,address,uint256,uint256,bytes) # ...,uint256,bytes for run id and signature
+          function: fulfillAirdrop(string,address,uint256,uint256,bytes) # ...,uint256,bytes for run id and signature
           inputs: '["${{ github.event.issue.user.node_id }}", "${{ fromJSON(github.event.issue.body).address }}", ${{ steps.contributions.outputs.count }}]'
           signer: web3actions/signer
           github-token: ${{ secrets.PAT }}
