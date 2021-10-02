@@ -55,9 +55,9 @@ const loadGithubUser = async () => {
 }
 
 const claiming = ref(false)
-const requestId = ref(null)
+const airdropPaid = ref(false)
 const ethAirdropReceiver = ref('')
-const airdropLink = computed(() => `https://github.com/web3actions/web3actions.github.io/issues/new?title=Airdrop&body={%22requestId%22:${JSON.stringify(requestId.value)},%22address%22:%22${ethAirdropReceiver.value || 'YOUR_ADDRESS'}%22}`)
+const airdropLink = computed(() => `https://github.com/web3actions/web3actions.github.io/issues/new?labels=airdrop&template=airdrop.md&title=Airdrop&body=${JSON.stringify({address: ethAirdropReceiver.value})}`)
 const airdropLinkCopied = ref(false)
 const copyAirdropLink = () => {
   navigator.clipboard.writeText(airdropLink.value)
@@ -69,13 +69,13 @@ const claim = async () => {
   if (!ethAccount.value) {
     const accounts = await ethProvider.send("eth_requestAccounts", [])
     ethAccount.value = accounts[0]
+    ethAirdropReceiver.value = ethAccount.value
   }
   
   try {
-    const fee = await airdropWithSigner.getGithubWorkflowFee('airdrop')
-    const tx = await airdropWithSigner.requestAirdrop(githubUser.value.node_id, { value: fee })
+    const tx = await airdropWithSigner.requestAirdrop(githubUser.value.node_id, { value: '1000000000000000' })
     const confirmedTx = await tx.wait()
-    requestId.value = confirmedTx.events[0].args.requestId
+    airdropPaid.value = true
     claiming.value = false
   } catch {
     claiming.value = false
@@ -132,7 +132,7 @@ const claim = async () => {
             </div>
             <div v-if="ethEnabled" class="text-center flex flex-col">
               <div class="mt-10 mx-auto relative">
-                <input type="text" v-model="githubUsername" :readonly="requestId" class="rounded-xl px-4 py-3 border-gray-300 shadow-inner focus:ring-indigo-600 focus:ring-4" placeholder="GitHub Username" />
+                <input type="text" v-model="githubUsername" class="rounded-xl px-4 py-3 border-gray-300 shadow-inner focus:ring-indigo-600 focus:ring-4" placeholder="GitHub Username" />
                 <div v-if="loadingGithubUser" class="absolute top-2 right-3">
                   <i class="fas fa-circle-notch fa-spin text-2xl text-gray-300" />
                 </div>
@@ -147,7 +147,7 @@ const claim = async () => {
                   <span v-else>{{ contributionCount / 10 }} W3ACT</span>
                 </div>
               </div>
-              <div v-if="requestId">
+              <div v-if="airdropPaid">
                 <div class="text-left text-indigo-900 mt-5 mx-auto max-w-lg bg-indigo-50 rounded-3xl px-5 py-4">
                   Thanks! Enter your address and continue or just copy and share the link. The GitHub user <strong>{{ githubUsername }}</strong> can now use it and submit the issue to receive the airdrop.
                 </div>
