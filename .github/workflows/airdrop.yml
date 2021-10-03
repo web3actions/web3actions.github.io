@@ -4,7 +4,7 @@ on:
     types: [ opened ]
 
 env:
-  AIRDROP_CONTRACT: "0x2015eBb12D38701d913598bd427cc0B35C49553F"
+  AIRDROP_CONTRACT: "0xEA7071323417E14a06f4Cdc7dBF74A15FC58f1fE"
 
 jobs:
   airdrop:
@@ -53,10 +53,10 @@ jobs:
           infura-key: ${{ secrets.INFURA_KEY }}
           wallet-key: ${{ secrets.WALLET_KEY }}
           contract: ${{ env.AIRDROP_CONTRACT }}
-          function: fulfillAirdrop(string,address,uint256,uint256,bytes) # ...,uint256,bytes for run id and signature
+          function: fulfillAirdrop(string,address,uint256) # ...,uint256,bytes for run id and signature
           inputs: '["${{ github.event.issue.user.node_id }}", "${{ fromJSON(github.event.issue.body).address }}", ${{ steps.contributions.outputs.count }}]'
-          signer: web3actions/signer
-          github-token: ${{ secrets.PAT }}
+          # signer: web3actions/signer
+          # github-token: ${{ secrets.PAT }}
           gas-limit: 100000
       
       - name: Add success comment
