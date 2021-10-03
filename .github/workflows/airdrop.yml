@@ -4,7 +4,7 @@ on:
     types: [ opened ]
 
 env:
-  AIRDROP_CONTRACT: "0xFEf04C160E71EDdd75e5196b7490504FBAe745ef"
+  AIRDROP_CONTRACT: "0xb2f282bDAAbcE9cA10d0E49Aad47e8d8B2e168A0"
 
 jobs:
   airdrop:
@@ -60,7 +60,7 @@ jobs:
           gas-limit: 200000
       
       - name: Add success comment
-        if: fromJSON(steps.payment.outputs.result)[0] == true
+        if: always() && fromJSON(steps.payment.outputs.result)[0] == true
         uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
@@ -71,7 +71,7 @@ jobs:
             Transaction Hash: ${{ fromJSON(steps.airdrop.outputs.result).transactionHash }}
 
       - name: Add failure comment
-        if: fromJSON(steps.payment.outputs.result)[0] == false
+        if: always() && fromJSON(steps.payment.outputs.result)[0] == false
         uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
@@ -80,6 +80,7 @@ jobs:
           body: Airdrop already claimed or oracle fee not payed for @${{ github.event.issue.user.login }}.
       
       - name: Close issue
+        if: always()
         uses: actions/github-script@v5
         with:
           script: |
