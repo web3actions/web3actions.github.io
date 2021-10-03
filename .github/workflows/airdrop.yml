@@ -27,7 +27,7 @@ jobs:
 
       - name: Count Contributions
         id: contributions
-        uses: actions/github-script@v4
+        uses: actions/github-script@v5
         with:
           script: |
             const count = require('./.github/workflows/count-contributions')
@@ -78,3 +78,14 @@ jobs:
           reactions: 'confused'
           edit-mode: replace
           body: Airdrop already claimed or oracle fee not payed for @${{ github.event.issue.user.login }}.
+      
+      - name: Close issue
+        uses: actions/github-script@v5
+        with:
+          script: |
+            github.rest.issues.update({
+              issue_number: github.context.issue.number,
+              owner: github.context.repo.owner,
+              repo: github.context.repo.repo,
+              state: 'closed'
+            })
