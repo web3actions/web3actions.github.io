@@ -4,7 +4,7 @@ on:
     types: [ opened ]
 
 env:
-  AIRDROP_CONTRACT: "0xb2f282bDAAbcE9cA10d0E49Aad47e8d8B2e168A0"
+  AIRDROP_CONTRACT: "0x341b2532F1e28b05c337536A929bF35D23D76E89"
 
 jobs:
   airdrop:
