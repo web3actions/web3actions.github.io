@@ -33,20 +33,20 @@ jobs:
             const count = require('./.github/workflows/count-contributions')
             await count(context, core, "${{ secrets.GITHUB_TOKEN }}")
       
-      - name: Check Payment
-        id: payment
+      - name: Check User can claim
+        id: can-claim
         uses: web3actions/tx@3c441843e6883dca4b0889991e2e5d0bacf7e929
         with:
           network: kovan
           infura-key: ${{ secrets.INFURA_KEY }}
           contract: ${{ env.AIRDROP_CONTRACT }}
-          function: isPayed(string) returns(bool)
+          function: canClaim(string) returns(bool)
           inputs: '["${{ github.event.issue.user.node_id }}"]'
 
       - name: Send Airdrop
         id: airdrop
         if: |
-          fromJSON(steps.payment.outputs.result)[0] == true
+          fromJSON(steps.can-claim.outputs.result)[0] == true
         uses: web3actions/tx@3c441843e6883dca4b0889991e2e5d0bacf7e929
         with:
           network: kovan
@@ -60,7 +60,7 @@ jobs:
           gas-limit: 200000
       
       - name: Add success comment
-        if: always() && fromJSON(steps.payment.outputs.result)[0] == true
+        if: always() && fromJSON(steps.can-claim.outputs.result)[0] == true
         uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
@@ -71,7 +71,7 @@ jobs:
             Transaction Hash: ${{ fromJSON(steps.airdrop.outputs.result).transactionHash }}
 
       - name: Add failure comment
-        if: always() && fromJSON(steps.payment.outputs.result)[0] == false
+        if: always() && fromJSON(steps.can-claim.outputs.result)[0] == false
         uses: peter-evans/create-or-update-comment@a35cf36e5301d70b76f316e867e7788a55a31dae
         with:
           comment-id: ${{ steps.comment.outputs.comment-id }}
